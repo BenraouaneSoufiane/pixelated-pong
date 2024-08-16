@@ -3,6 +3,7 @@ A pixelated pong javascript game, Doge VS Chuck, a response to the Ashinthewild'
 
 # Get started
 By default it runs on the port 3005, you can point your domain & add ssl, also you can run it definitively by using nogup or pm2
+You can also edit the ball speed, ball image,...
 
 ```
 git clone https://github.com/BenraouaneSoufiane/pixelated-pong.git
