@@ -93,9 +93,12 @@ var playerSelected = 0
 
 // When ball collides with player, change direction
 ball.onCollide("player", function () {
+    console.log(get('player')[1].pos.y);
     ball.speed_x = -ball.speed_x // Change direction of horizontal speed
-    ball.speed_y = Math.floor(Math.random() * 250) + 150 // Vertical speed is random number between 150 and 400
+    ball.speed_y = Math.floor(Math.random() * 350) + 350 // Vertical speed is random number between 150 and 400
     const negative = Math.floor(Math.random() * 2)
+    players[1].moveTo(WIDTH-65,players[1].pos.y);
+
     if (negative == 1) {
         ball.speed_y = -ball.speed_y
     }
@@ -126,11 +129,19 @@ ball.onUpdate(function () {
         ball.speed_x = -5000
         ball.speed_y = 0
         ball.moveTo(WIDTH / 2, HEIGHT / 2)
-
         // Increment other player's score
         players[1 - playerSelected].score++
         scoreboard.text = `${players[0].score}:${players[1].score}`
         playerSelected = 0
+        if(players[0].score === 10 || players[1].score === 10 ){
+            alert('Game Over')
+            players[0].score = 0
+            players[1].score = 0
+            scoreboard.text = `${players[0].score}:${players[1].score}`
+            players[0].moveTo(85, HEIGHT / 2)
+            players[1].moveTo(WIDTH-65, HEIGHT / 2)
+            
+        }
     }
     
 
